@@ -1,6 +1,8 @@
+// TODO http://localhost:3000/budgets/new -> attempts to allow for new transactions to be added in via form shown; can be accesed through New Budget button or edit button
+
 import { useState } from "react";
 // import axios from "axios";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { createTransaction } from "../api/fetch";
 
 export default function BudgetNew() {
@@ -12,7 +14,7 @@ export default function BudgetNew() {
     catergory: "",
   });
   const navigate = useNavigate();
-  const { index} = useParams();
+  // const { index} = useParams();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -31,6 +33,8 @@ export default function BudgetNew() {
       [event.target.id]: event.target.value,
     });
   };
+
+  
 
   
   

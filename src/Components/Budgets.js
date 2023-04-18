@@ -1,3 +1,6 @@
+//  TODO: http://localhost:3000/budgets -- shows the index of the transactions array via backend in the fetch
+
+
 import React, { useState, useEffect } from "react";
 import Budget from "./Budget";
 import {useNavigate, useParams} from "react-router-dom"
@@ -19,6 +22,7 @@ function Budgets() {
       })
   }, [index, navigate]);
 
+//   would set color according to each transaction value being under or over a certain amount
   const balanceChange = budgets.map((budget) => Number(budget.amount));
   let sumChange = 0;
   balanceChange.forEach((amt) => {

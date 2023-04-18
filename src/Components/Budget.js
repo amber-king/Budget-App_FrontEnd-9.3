@@ -1,3 +1,5 @@
+// http://localhost:3000/budget -> Connets to Budgets.js with links to each part of transaction
+
 import React from 'react'
 import { Link } from "react-router-dom";
 

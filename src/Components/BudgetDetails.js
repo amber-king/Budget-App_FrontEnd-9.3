@@ -1,3 +1,5 @@
+// TODO: http://localhost:3000/budgets/details -> will appear blank but connects to displaying details of the transactions clicked via the index page 
+
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import FourOFour from "../Pages/FourOFour";

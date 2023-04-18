@@ -24,9 +24,6 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
 
 @keyframes App-logo-spin {
   from {
@@ -76,6 +73,7 @@ table {
 
 td {
   text-align: center;
+  
 }
 
 tbody td:not(td:first-of-type):hover {
@@ -84,7 +82,7 @@ tbody td:not(td:first-of-type):hover {
 }
 
 tbody tr:nth-child(even) {
-  background: #f4eafd;
+  background: lightgray;
 }
 
 
