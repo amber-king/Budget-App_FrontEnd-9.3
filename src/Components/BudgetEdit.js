@@ -34,10 +34,10 @@ const [editTransaction, setEditTransaction] = useState({
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .post(`${process.env.REACT_APP_API_URL}/budget/`, editTransaction)
+      .get(`${process.env.REACT_APP_API_URL}/budgets/${index}`, editTransaction)
       .then((response) => {
         setEditTransaction(response.data);
-        navigate(`/budget`);
+        navigate(`/budgets/${index}`);
       })
       .catch((error) => {
         console.log(error);

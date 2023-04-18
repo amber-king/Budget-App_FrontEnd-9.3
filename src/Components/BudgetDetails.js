@@ -49,7 +49,7 @@ function BudgetDetails() {
       </div>
       <br></br>
       <div className="editBtn">
-        <Link to={`http://localhost:3000/budgets/edit`}>
+        <Link to={`http://localhost:3000/budgets/new`}>
           <button>Edit</button>
         </Link>
       </div>
