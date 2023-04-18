@@ -13,13 +13,12 @@ function BudgetDetails() {
     axios
       .get(`${baseAPI}/budget/${index}`)
       .then((response) => {
-        // console.log(response);
         setListBudgets(response.data);
       })
       .catch(() => {
         navigate(FourOFour);
       });
-  }, [index, navigate]);
+  }, [baseAPI, index, navigate]);
 
   const handleDelete = () => {
     axios.delete(`${baseAPI}/budget/${index}`).then(() => {
@@ -29,7 +28,7 @@ function BudgetDetails() {
   return (
     <div className="accountDetails">
       <h1>Budget Details: </h1>
-      <h4>
+      <h3>
         Item Name: {listBudget.item_name}
         <br></br>
         Amount: {listBudget.amount}
@@ -39,18 +38,21 @@ function BudgetDetails() {
         From: {listBudget.from}
         <br></br>
         Catergory: {listBudget.catergory}
-      </h4>
+        <br></br>
+      </h3>
 
       <div className="backBtn">
         <Link to={`/budget`}>
           <button>Back</button>
         </Link>
       </div>
+      <br></br>
       <div className="editBtn">
         <Link to={`/budget/${index}/edit`}>
           <button>Edit</button>
         </Link>
       </div>
+      <br></br>
       <div className="deleteBtn">
         <button onClick={handleDelete}>Delete</button>
       </div>
