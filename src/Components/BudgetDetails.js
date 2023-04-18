@@ -1,37 +1,38 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import FourOFour from "../Pages/FourOFour";
 import axios from "axios";
 
 function BudgetDetails() {
   const [listBudget, setListBudgets] = useState([]);
-  const baseAPI = process.env.REACT_APP_API_URL;
   let { index } = useParams();
   let navigate = useNavigate();
 
   useEffect(() => {
     axios
-      .get(`${baseAPI}/budget/${index}`)
+      .get(`${process.env.REACT_APP_API_URL}/budgets/${index}`)
       .then((response) => {
         setListBudgets(response.data);
       })
       .catch(() => {
         navigate(FourOFour);
       });
-  }, [baseAPI, index, navigate]);
+  }, [index, navigate]);
 
   const handleDelete = () => {
-    axios.delete(`${baseAPI}/budget/${index}`).then(() => {
-      navigate("/budget");
-    });
+    axios
+      .delete(`${process.env.REACT_APP_API_URL}/budgets/${index}`)
+      .then(() => {
+        navigate("/budgets");
+      });
   };
   return (
     <div className="accountDetails">
-      <h1>Budget Details: </h1>
+      <h1>Budget Details ⤵️ </h1>
       <h3>
         Item Name: {listBudget.item_name}
         <br></br>
-        Amount: {listBudget.amount}
+        Amount: $ {listBudget.amount}
         <br></br>
         Date: {listBudget.date}
         <br></br>

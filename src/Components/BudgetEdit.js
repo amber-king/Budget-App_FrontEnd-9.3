@@ -1,10 +1,9 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export default function BudgetEdit() {
-  const baseAPI = process.env.REACT_APP_API_URL;
-  const [editTransaction, setEditTransaction] = useState({
+const [editTransaction, setEditTransaction] = useState({
     item_name: "",
     amount: 0,
     date: "",
@@ -23,19 +22,19 @@ export default function BudgetEdit() {
 
   useEffect(() => {
     axios
-      .get(`${baseAPI}/budget/${index}`)
+      .get(`${ process.env.REACT_APP_API_URL}/budgets/${index}`)
       .then((response) => {
         setEditTransaction(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, [baseAPI, index]);
+  }, [index]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .post(`${baseAPI}/budget/`, editTransaction)
+      .post(`${process.env.REACT_APP_API_URL}/budget/`, editTransaction)
       .then((response) => {
         setEditTransaction(response.data);
         navigate(`/budget`);

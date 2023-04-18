@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom"
 
 export default function NewLogForm() {
  const navigate = useNavigate(); 
- const baseAPI = process.env.REACT_APP_API_URL;
  const [newTransaction, setNewTransaction] = useState({
     item_name: "",
     amount: 0,
@@ -21,7 +20,7 @@ const handleTextChange = (event) => {
  const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .post(`${baseAPI}/budget`, newTransaction)
+      .post(`${ process.env.REACT_APP_API_URL}/budget`, newTransaction)
       .then(() => {
         navigate("/budget");
       })

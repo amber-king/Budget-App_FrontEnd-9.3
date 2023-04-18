@@ -1,24 +1,24 @@
-import { useState, useEffect } from "react";
-// import axios from "axios";
+import React, { useState, useEffect } from "react";
 import Budget from "./Budget";
 
 function Budgets() {
   const [budgets, setBudgets] = useState([]);
-  const baseAPI = process.env.REACT_APP_API_URL;
+  //   const baseAPI = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     // fetch method
-    fetch(`${baseAPI}/budgets`)
+    fetch(`${process.env.REACT_APP_API_URL}/budgets`)
       .then((res) => res.json())
       .then((data) => {
         setBudgets(data);
+        console.log(setBudgets)
       })
       .catch((error) => console.log(error));
-  }, [baseAPI]);
+  }, []);
 
   const balanceChange = budgets.map((budget) => Number(budget.amount));
   let sumChange = 0;
-  budgets.forEach((amt) => {
+  balanceChange.forEach((amt) => {
     sumChange += amt;
     return sumChange;
   });
@@ -39,7 +39,11 @@ function Budgets() {
         <table>
           <thead>
             <tr>
-              <th></th>
+              <th>Date⤵️ </th>
+              <th>Transactions⤵️ </th>
+              <th>Amount⤵️ </th>
+              <th>Catergory⤵️ </th>
+              <th>From⤵️ </th>
             </tr>
           </thead>
           <tbody>
