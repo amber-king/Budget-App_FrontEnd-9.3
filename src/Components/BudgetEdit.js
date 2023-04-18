@@ -22,7 +22,7 @@ const [editTransaction, setEditTransaction] = useState({
 
   useEffect(() => {
     axios
-      .get(`${ process.env.REACT_APP_API_URL}/budgets/${index}`)
+      .get(`${process.env.REACT_APP_API_URL}/budgets/${index}`)
       .then((response) => {
         setEditTransaction(response.data);
       })
@@ -46,9 +46,9 @@ const [editTransaction, setEditTransaction] = useState({
   return (
     <div className="Edit">
       <form onSubmit={handleSubmit}>
-        <label htmlFor="itemName">Item Name:</label>
+        <label htmlFor="item_name">Item Name:</label>
         <input
-          id="itemName"
+          id="item_name"
           value={editTransaction.item_name}
           type="text"
           onChange={handleTextChange}

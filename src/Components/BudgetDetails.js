@@ -10,7 +10,7 @@ function BudgetDetails() {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}/budgets/${index}`)
+      .get(`http://localhost:3333/transactions/${index}`)
       .then((response) => {
         setListBudgets(response.data);
       })
@@ -21,7 +21,7 @@ function BudgetDetails() {
 
   const handleDelete = () => {
     axios
-      .delete(`${process.env.REACT_APP_API_URL}/budgets/${index}`)
+      .delete(`http://localhost:3333/transactions/${index}`)
       .then(() => {
         navigate("/budgets");
       });
@@ -30,26 +30,26 @@ function BudgetDetails() {
     <div className="accountDetails">
       <h1>Budget Details ⤵️ </h1>
       <h3>
-        Item Name: {listBudget.item_name}
+        Item Name ➡️ {listBudget.item_name}
         <br></br>
-        Amount: $ {listBudget.amount}
+        Amount ➡️ $ {listBudget.amount}
         <br></br>
-        Date: {listBudget.date}
+        Date ➡️ {listBudget.date}
         <br></br>
-        From: {listBudget.from}
+        From ➡️ {listBudget.from}
         <br></br>
-        Catergory: {listBudget.catergory}
+        Catergory ➡️ {listBudget.catergory}
         <br></br>
       </h3>
 
       <div className="backBtn">
-        <Link to={`/budget`}>
+        <Link to={`http://localhost:3000/budgets`}>
           <button>Back</button>
         </Link>
       </div>
       <br></br>
       <div className="editBtn">
-        <Link to={`/budget/${index}/edit`}>
+        <Link to={`http://localhost:3000/budgets/edit`}>
           <button>Edit</button>
         </Link>
       </div>

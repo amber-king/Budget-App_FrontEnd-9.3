@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom"
 
-export default function NewLogForm() {
+export default function BudgetNew() {
  const navigate = useNavigate(); 
  const [newTransaction, setNewTransaction] = useState({
     item_name: "",
@@ -20,7 +20,7 @@ const handleTextChange = (event) => {
  const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .post(`${ process.env.REACT_APP_API_URL}/budget`, newTransaction)
+      .post(`${process.env.REACT_APP_API_URL}/budgets/`, newTransaction)
       .then(() => {
         navigate("/budget");
       })
@@ -30,11 +30,11 @@ const handleTextChange = (event) => {
   };
  
   return (
-    <div className="Edit">
+    <div className="New">
     <form onSubmit={handleSubmit}>
-      <label htmlFor="itemName">Item Name:</label>
+      <label htmlFor="item_name">Item Name:</label>
       <input
-        id="itemName"
+        id="item_name"
         value={newTransaction.item_name}
         type="text"
         onChange={handleTextChange}
@@ -67,7 +67,7 @@ const handleTextChange = (event) => {
       <br />
       <input type="submit" />
     </form>
-    <Link to={`/budget/`}>
+    <Link to={`http://localhost:3000/budgets`}>
       <button>Back</button>
     </Link>
   </div>

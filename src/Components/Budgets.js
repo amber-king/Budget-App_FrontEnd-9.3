@@ -1,20 +1,23 @@
 import React, { useState, useEffect } from "react";
 import Budget from "./Budget";
+import {useNavigate, useParams} from "react-router-dom"
 
 function Budgets() {
   const [budgets, setBudgets] = useState([]);
-  //   const baseAPI = process.env.REACT_APP_API_URL;
-
+  let {index} = useParams()
+  let navigate = useNavigate()
   useEffect(() => {
     // fetch method
-    fetch(`${process.env.REACT_APP_API_URL}/budgets`)
+    fetch(`http://localhost:3333/transactions/${index}`)
       .then((res) => res.json())
       .then((data) => {
-        setBudgets(data);
-        console.log(setBudgets)
+        setBudgets(data)
+     
       })
-      .catch((error) => console.log(error));
-  }, []);
+      .catch(() => {
+        navigate("/not-found")
+      })
+  }, [index, navigate]);
 
   const balanceChange = budgets.map((budget) => Number(budget.amount));
   let sumChange = 0;
