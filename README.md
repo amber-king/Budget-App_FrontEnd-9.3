@@ -1,10 +1,21 @@
-# Getting Started with Create React App
+## Budget-App_FrontEnd-9.3 💰
 
-https://budget-app-frontend.netlify.app/
+This is the Front-End code of the Budget App Project. The purpose of this application is to :
+
+💰 Allows user to view their budget 
+<br>
+💰 Allows user to delete 
+<br>
+💰 Allows user to view their total current balance
+
+__________________________________________________________________________________________________________
+
+
+### Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+### Available Scripts
 
 In the project directory, you can run:
 
