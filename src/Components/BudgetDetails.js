@@ -40,7 +40,7 @@ function BudgetDetails() {
         <br></br>
         From ➡️ {listBudget.from}
         <br></br>
-        Catergory ➡️ {listBudget.catergory}
+        Category ➡️ {listBudget.category}
         <br></br>
       </h3>
 

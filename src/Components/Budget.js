@@ -20,7 +20,7 @@ return (
         <Link to={`/budgets/${index}`}>{budget.from}</Link>
       </td>
       <td>
-        <Link to={`/budgets/${index}`}>{budget.catergory}</Link>
+        <Link to={`/budgets/${index}`}>{budget.category}</Link>
       </td>
     </tr>
   );

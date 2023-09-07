@@ -11,13 +11,14 @@ export default function BudgetNew() {
     amount: 0,
     date: "",
     from: "",
-    catergory: "",
+    category: "",
   });
   const navigate = useNavigate();
   // const { index} = useParams();
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    newTransaction.amount = parseFloat(newTransaction.amount); // converts amount to a number before sending it
     createTransaction(newTransaction)
       .then((response) => {
         navigate(`/budgets/${response.index}`);
@@ -34,10 +35,6 @@ export default function BudgetNew() {
     });
   };
 
-  
-
-  
-  
   return (
     <div className="New">
       <form onSubmit={handleSubmit}>
@@ -65,18 +62,18 @@ export default function BudgetNew() {
           onChange={handleTextChange}
         />
 
-        <label htmlFor="catergory">Catergory:</label>
+        <label htmlFor="category">Category:</label>
         <textarea
-          id="catergory"
-          value={newTransaction.catergory}
+          id="category"
+          value={newTransaction.category}
           onChange={handleTextChange}
-          placeholder="Catergory"
+          placeholder="Category"
         />
 
         <br />
         <input type="submit" />
       </form>
-      <Link to={`http://localhost:3000/budgets`}>
+      <Link to={`/budgets`}>
         <button>Back</button>
       </Link>
     </div>

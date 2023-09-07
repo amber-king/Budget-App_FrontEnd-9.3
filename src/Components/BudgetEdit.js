@@ -5,12 +5,12 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export default function BudgetEdit() {
-const [editTransaction, setEditTransaction] = useState({
+  const [editTransaction, setEditTransaction] = useState({
     item_name: "",
     amount: 0,
     date: "",
     from: "",
-    catergory: "",
+    category: "",
   });
   let { index } = useParams();
   let navigate = useNavigate();
@@ -23,26 +23,32 @@ const [editTransaction, setEditTransaction] = useState({
   };
 
   useEffect(() => {
+    console.log("Edit Form: Fetching data from index", index);
     axios
       .get(`${process.env.REACT_APP_API_URL}/budgets/${index}`)
       .then((response) => {
+        console.log("Edit Form: Response data", response);
         setEditTransaction(response.data);
+        console.log(response.data)
       })
       .catch((error) => {
-        console.log(error);
+        console.log("Edit form: Error fetching data", error);
       });
   }, [index]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log("Edit Form; Submitting data", editTransaction);
     axios
-      .get(`${process.env.REACT_APP_API_URL}/budgets/${index}`, editTransaction)
+      .put(`${process.env.REACT_APP_API_URL}/budgets/${index}`, editTransaction)
       .then((response) => {
-        setEditTransaction(response.data);
-        navigate(`/budgets/${index}`);
+        console.log("Edit Form: Edit successful", response);
+
+        // setEditTransaction(response.data);
+        navigate(`/budgets`);
       })
       .catch((error) => {
-        console.log(error);
+        console.log("Edit Form: Error editing data", error);
       });
   };
   return (
@@ -72,18 +78,18 @@ const [editTransaction, setEditTransaction] = useState({
           onChange={handleTextChange}
         />
 
-        <label htmlFor="catergory">Catergory:</label>
+        <label htmlFor="category">Category:</label>
         <textarea
-          id="catergory"
-          value={editTransaction.catergory}
+          id="category"
+          value={editTransaction.category}
           onChange={handleTextChange}
-          placeholder="Catergory"
+          placeholder="Category"
         />
 
         <br />
         <input type="submit" />
       </form>
-      <Link to={`/budget/${index}`}>
+      <Link to={`/budgets/${index}`}>
         <button>Back</button>
       </Link>
     </div>

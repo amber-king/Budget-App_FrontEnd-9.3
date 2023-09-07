@@ -6,7 +6,7 @@ export function createTransaction(transaction) {
       body: JSON.stringify(transaction),
       headers: { "Content-Type": "application/json" },
     };
-    return fetch(`${URL}/budgets/`, options).then((response) => {
+    return fetch(URL, options).then((response) => {
       return response.json();
     });
   }

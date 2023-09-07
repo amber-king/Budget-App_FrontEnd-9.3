@@ -49,7 +49,7 @@ function Budgets() {
               <th>Date⤵️ </th>
               <th>Transactions⤵️ </th>
               <th>Amount⤵️ </th>
-              <th>Catergory⤵️ </th>
+              <th>Category⤵️ </th>
               <th>From⤵️ </th>
             </tr>
           </thead>
